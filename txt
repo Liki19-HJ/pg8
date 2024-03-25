@@ -1,0 +1,115 @@
+ 
+<!DOCTYPE html> 
+<html lang="en" ng-app="loginApp"> 
+ 
+<head> 
+    <meta charset="UTF-8"> 
+    <title>Login Form</title> 
+    <script 
+src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script> 
+    <style> 
+        body { 
+            font-family: Arial, sans-serif; 
+            background-color: #f4f4f4; 
+            margin: 0; 
+            padding: 0; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            height: 100vh; 
+        } 
+ 
+        .login-container { 
+            background-color: #fff; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+            padding: 20px; 
+            border-radius: 5px; 
+            text-align: center; 
+        } 
+ 
+        label { 
+            display: block; 
+            margin-bottom: 5px; 
+            color: #333; 
+        } 
+ 
+        input { 
+            width: 100%; 
+            padding: 8px; 
+            border-radius: 5px; 
+            border: 1px solid #ddd; 
+            margin-bottom: 10px; 
+        } 
+ 
+        button { 
+            background-color: #4caf50; 
+            color: white; 
+            border: none; 
+            border-radius: 3px; 
+ 
+ 
+ 
+ 
+ 
+            padding: 10px; 
+            cursor: pointer; 
+        } 
+ 
+        button:hover { 
+            background-color: #45a049; 
+        } 
+ 
+        .error-message { 
+            color: red; 
+            margin-top: 10px; 
+        } 
+    </style> 
+</head> 
+ 
+<body ng-controller="LoginController"> 
+    <div class="login-container"> 
+        <h2>Login Form</h2> 
+        <form ng-submit="login()"> 
+            <label for="username">Username:</label> 
+            <input type="text" id="username" ng-model="user.username" required> 
+ 
+            <label for="password">Password:</label> 
+            <input type="password" id="password" ng-model="user.password" required> 
+ 
+            <button type="submit">Login</button> 
+ 
+            <p class="error-message" ng-show="loginError">{{ loginError }}</p> 
+        </form> 
+    </div> 
+ 
+    <script> 
+        angular.module('loginApp', []) 
+            .controller('LoginController', function ($scope) { 
+                $scope.user = { 
+                    username: '', 
+                    password: '' 
+                }; 
+ 
+                $scope.loginError = ''; 
+ 
+                $scope.login = function () { 
+                    // Simulate login logic 
+                    if ($scope.user.username && $scope.user.password) { 
+                        // Successful login 
+                        alert('Login successful!'); 
+                        $scope.loginError = ''; 
+                    } else { 
+                        // Failed login 
+                        $scope.loginError = 'Both username and password are required'; 
+                    } 
+                }; 
+            }); 
+ 
+ 
+ 
+ 
+ 
+    </script> 
+</body> 
+ 
+</html>
